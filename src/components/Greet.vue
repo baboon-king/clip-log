@@ -43,6 +43,13 @@ register("Option+V", async () => {
   appWindow.setPosition(new LogicalPosition(x, y));
   appWindow.setFocus();
 });
+window.addEventListener("keyup", (e) => {
+  const key = e.key;
+  const Numbers = ["1", "2", "3", "4", "5", "6"];
+  if (Numbers.includes(key)) {
+    onClick(history.value[Number(key)]);
+  }
+});
 </script>
 
 <template>
