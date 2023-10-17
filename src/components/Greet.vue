@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { invoke } from "@tauri-apps/api/tauri";
 import { readText, writeText } from "@tauri-apps/api/clipboard";
 import { register } from "@tauri-apps/api/globalShortcut";
+import { LogicalPosition, appWindow } from "@tauri-apps/api/window";
 
 const greetMsg = ref("");
 const name = ref("");
@@ -37,6 +38,8 @@ const onClick = (text: string) => {
 register("Option+V", () => {
   console.log("Shortcut triggered");
   writeText("Shortcut triggered");
+  appWindow.setPosition(new LogicalPosition(600, 500));
+  appWindow.setFocus();
 });
 </script>
 
