@@ -35,10 +35,11 @@ async function greet() {
 const onClick = (text: string) => {
   writeText(text);
 };
-register("Option+V", () => {
+register("Option+V", async () => {
   console.log("Shortcut triggered");
   writeText("Shortcut triggered");
-  appWindow.setPosition(new LogicalPosition(600, 500));
+  const [x, y] = await invoke<[number, number]>("get_mouse_pos");
+  appWindow.setPosition(new LogicalPosition(x, y));
   appWindow.setFocus();
 });
 </script>
