@@ -34,6 +34,7 @@ async function greet() {
 
 const onClick = (text: string) => {
   writeText(text);
+  appWindow.hide();
 };
 register("Option+V", async () => {
   console.log("Shortcut triggered");
