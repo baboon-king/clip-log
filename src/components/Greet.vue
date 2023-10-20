@@ -47,7 +47,7 @@ window.addEventListener("keyup", (e) => {
   const key = e.key;
   const Numbers = ["1", "2", "3", "4", "5", "6"];
   if (Numbers.includes(key)) {
-    onClick(history.value[Number(key)]);
+    onClick(history.value[Number(key) - 1]);
   }
 });
 </script>
