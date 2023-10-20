@@ -5,10 +5,8 @@ import { readText, writeText } from "@tauri-apps/api/clipboard";
 import { register } from "@tauri-apps/api/globalShortcut";
 import { LogicalPosition, appWindow } from "@tauri-apps/api/window";
 
-const greetMsg = ref("");
-const name = ref("");
-
 const history = ref<string[]>([]);
+
 appWindow.hide();
 
 setInterval(async () => {
@@ -26,27 +24,21 @@ setInterval(async () => {
   }
 
   history.value.unshift(text);
-}, 100);
-
-async function greet() {
-  // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-  greetMsg.value = await invoke("greet", { name: name.value });
-}
+}, 800);
 
 const onClick = (text: string) => {
   writeText(text);
   appWindow.hide();
 };
 register("Option+V", async () => {
-  console.log("Shortcut triggered");
-  writeText("Shortcut triggered");
   const [x, y] = await invoke<[number, number]>("get_mouse_pos");
   appWindow.setPosition(new LogicalPosition(x, y));
   appWindow.setFocus();
 });
+
+const Numbers = ["1", "2", "3", "4", "5", "6"];
 window.addEventListener("keyup", (e) => {
   const key = e.key;
-  const Numbers = ["1", "2", "3", "4", "5", "6"];
   if (Numbers.includes(key)) {
     onClick(history.value[Number(key) - 1]);
   }
@@ -54,15 +46,8 @@ window.addEventListener("keyup", (e) => {
 </script>
 
 <template>
-  <!-- <form class="row" @submit.prevent="greet">
-    <input id="greet-input" v-model="name" placeholder="Enter a name..." />
-    <button type="submit">Greet</button>
-  </form> -->
-
-  <p>{{ greetMsg }}</p>
-
   <div>
-    <template v-for="(item, index) in history">
+    <template v-for="(item, index) in history" :key="item">
       <div style="margin-bottom: 10px" @dblclick="onClick(item)">
         {{ index + 1 }}. {{ item }}
       </div>
