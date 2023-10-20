@@ -46,7 +46,7 @@ window.addEventListener("keyup", (e) => {
 </script>
 
 <template>
-  <div>
+  <div style="width: 300px; margin: 0 auto; text-align: start">
     <template v-for="(item, index) in history" :key="item">
       <div style="margin-bottom: 10px" @dblclick="onClick(item)">
         {{ index + 1 }}. {{ item }}
