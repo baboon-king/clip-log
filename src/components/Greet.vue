@@ -9,6 +9,7 @@ const greetMsg = ref("");
 const name = ref("");
 
 const history = ref<string[]>([]);
+appWindow.hide();
 
 setInterval(async () => {
   const text = await readText();
