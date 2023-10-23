@@ -20,6 +20,7 @@ Use the fixed "Option + V" to summon me.
 
   - [x] support Text
   - [x] Use the shortcut keys to summon
+  - [x] Use the shortcut keys to summon and follow the mouse
   - [x] Use the shortcut keys to select (1 - 6)
   - [ ] move to Yew
   - [ ] Save to file
@@ -34,6 +35,7 @@ Use the fixed "Option + V" to summon me.
     - [ ] Customize Log Path
     - [ ] Customize sensitivity
     - [ ] Customize Theme
+    - [ ] is follow the mouse
 
 - UI
   - [ ] redesign UI
